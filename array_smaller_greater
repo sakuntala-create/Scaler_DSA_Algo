@@ -1,0 +1,23 @@
+/**
+ * @input A : Integer array
+ * 
+ * @Output Integer
+ */
+ import "sort"
+
+func solve(A []int )  (int) {
+    if len(A)<=2{
+        return 0
+    }
+    sort.Ints(A)
+    count:=0
+    
+    smallest:= A[0]
+    largest := A[len(A)-1]
+    for i:= 1; i< len(A) ; i++{
+      if A[i] > smallest && A[i]< largest{
+          count++
+      }
+    }
+    return count
+}
