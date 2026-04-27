@@ -1,0 +1,19 @@
+func solve(A []int) int {
+    if len(A) == 0 {
+        return 0
+    }
+
+    maxVal := A[0]
+    for _, v := range A {
+        if v > maxVal {
+            maxVal = v
+        }
+    }
+
+    seconds := 0
+    for _, v := range A {
+        seconds += maxVal - v
+    }
+
+    return seconds
+}
