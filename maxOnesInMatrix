@@ -1,0 +1,21 @@
+/**
+ * @input A : 2D integer array 
+ * 
+ * @Output Integer
+ */
+func solve(A [][]int )  (int) {
+   n:= len(A)
+   row , col  := 0,n-1
+
+   maxRow := 0
+
+  for row< n && col >=0 {
+      if A[row][col] == 1{
+          col--
+          maxRow = row
+      }else{
+          row++
+      }
+  }
+    return maxRow
+}
