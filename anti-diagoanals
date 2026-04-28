@@ -1,0 +1,35 @@
+/**
+ * @input A : 2D integer array 
+ * 
+ * @Output 2D int array.
+ */
+func diagonal(A [][]int )  ([][]int) {
+    n := len(A)
+    rows := 2*n-1
+    cols := n
+    j:=0
+
+    result := make([][]int, rows)
+    for i:= 0; i<rows;i++{
+        result[i]= make([]int , cols)
+    }
+    
+    for i:=0;i<rows;i++{
+        j=0
+        row:=0
+        col :=i
+        if i>=cols{
+            row = i-cols+1
+            col = cols-1
+        }
+        for row<n && col>=0{
+            result[i][j] = A[row][col]
+            j++
+            row++
+            col--
+        }
+
+    }
+return result
+
+}
