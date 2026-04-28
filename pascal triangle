@@ -1,0 +1,23 @@
+/**
+ * @input A : Integer
+ * 
+ * @Output 2D int array.
+ */
+func solve(A int )  ([][]int) {
+    result := make([][]int, A)
+    for i:=0 ; i<A ;i++{
+        result[i] = make([]int,A)
+        result[i][0]=1
+    }
+
+    
+
+    for i:=1;i<A;i++{
+        for j:=1;j<A;j++{
+            result[i][j]=result[i-1][j]+result[i-1][j-1]
+        }
+    }
+
+    return result
+
+}
