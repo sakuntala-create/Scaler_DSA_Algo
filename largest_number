@@ -1,0 +1,22 @@
+/**
+ * @input A : Integer array
+ * 
+ * @Output string.
+ */
+ import "sort"
+ import "strconv"
+func largestNumber(A []int )  (string) {
+   strs := make([]string, len(A))
+   for i, num := range A {
+		strs[i] = strconv.Itoa(num)
+	}
+
+   sort.Slice(strs,func(i,j int)bool{
+       return strs[i]+strs[j] > strs[j]+strs[i]
+   })
+  res:= ""
+  for i:=0;i<len(strs);i++{
+      res = res+strs[i]
+  }
+  return res
+}
