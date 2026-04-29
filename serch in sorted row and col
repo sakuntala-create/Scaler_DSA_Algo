@@ -1,0 +1,28 @@
+/**
+ * @input A : 2D integer array 
+ * @input B : Integer
+ * 
+ * @Output Integer
+ */
+func solve(A [][]int , B int )  (int) {
+    col := len(A[0])
+
+    i:=0
+    j:=col-1
+
+    for i<len(A) && j>=0{
+        if A[i][j]==B{
+            return (i+1)*1009 +( j+1)
+        }
+        if A[i][j]>B{
+            j--
+        }
+        if A[i][j]<B{
+            i++
+        }
+
+    }
+
+    return -1
+
+}
