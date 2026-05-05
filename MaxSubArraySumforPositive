@@ -1,0 +1,33 @@
+
+
+func longestSubArrayWithGivenSum(input []int , target int) int {
+    if len(input) == 0{
+		return 0
+	}
+  L,R := 0,0
+  sum := input[0]
+  length := 0
+
+  for R<len(input){
+
+	for sum > target && L <=R{
+		sum = sum - input[L]
+		L++
+	}
+
+	if sum == target{
+       if length < R-L+1{
+			length = R-L+1
+		}
+	}
+
+	R++
+	if R< len(input){
+		sum = sum + input[R]
+	}
+
+
+  }
+
+  return length
+}
