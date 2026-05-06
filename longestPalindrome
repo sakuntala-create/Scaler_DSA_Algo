@@ -1,0 +1,42 @@
+// Palindrome check / longest palindrome
+
+func countPalindromicSubStr(in string) int{
+
+	count:=0
+
+	for i:=0;i<len(in);i++{
+         // count odd palindromes
+		len1 = count + countPalidroms(in,i,i)
+
+		//count even palindromes
+		len2 = count + countPalidroms(in,i,i+1)
+
+		maxLen := len1
+		if len2>len1{
+			maxLen = len2
+		} 
+
+		if maxLen>end-start{
+			end = i+maxLen/2
+			start = i- (maxLen-1)/2
+		}
+	}
+
+	return count
+     
+}
+
+
+countPalidroms( s string , left,right int) int{
+
+	count :=0
+
+	for  (left>=0 && right< len(s)) && (s[left]==s[right]){
+		count++
+		left--
+		right++
+	}
+
+	return right-left-1
+
+}
