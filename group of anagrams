@@ -1,0 +1,39 @@
+// group the anagrams
+
+func groupTheAnagrams(input []string) [][]string{
+
+	if len(input)==0{
+		return [][]string{}
+	}
+
+	wordMap:= make(map[string][]string)
+
+	for i:=0;i<len(input);i++{
+		key := keyBuilder(input[i])
+		wordMap[key]= append(wordMap[key], input[i])
+	}
+
+	res := [][]string{}
+
+	for _,val := range wordMap{
+		res = append(res, val)
+	}
+
+	return res
+}
+
+func keyBuilder(in string) string{
+	keyMap := make([]int,26)
+
+	for i:=0;i<len(in);i++{
+		keyMap[in[i]-'a']++
+	}
+
+	// build key
+     key:=""
+	for i:=0;i<len(keyMap);i++{
+		key = key+"#"+strconv.Itoa(keyMap[i])
+	}
+	return key
+}
+
