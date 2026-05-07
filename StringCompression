@@ -1,0 +1,24 @@
+// String Compression
+
+func stringCompression(in string) string{
+
+	if len(in)<=1{
+		return in
+	}
+  
+
+	numStack := []byte{}
+
+	for i:=0;i<len(in);i++{
+		if len(numStack)!=0{
+		if in[i] == numStack[len(numStack)-1]{
+			numStack = numStack[:len(numStack)-1]
+		}
+	}else{
+		numStack = append(numStack,in[i])
+	}
+	}
+
+
+	return string(numStack)
+}
