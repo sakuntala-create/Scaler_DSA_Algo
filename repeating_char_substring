@@ -1,0 +1,60 @@
+// maximum substring with reapeating characters (in string the characters can be replaced max k times)
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	input := "ABBABCBAADDDDDDDEPD"
+	k := 2
+
+	fmt.Println(findMaxSubstring(input, k))
+
+}
+
+func findMaxSubstring(input string, k int) int {
+
+	if len(input) == 0 {
+		return 0
+	}
+
+	if len(input) <= k {
+		return len(input)
+	}
+
+	freqMap := make(map[byte]int)
+	maxFreq := -1
+	windowSize := 0
+	maxWindowSize := 0
+	l := 0
+
+	for r := 0; r < len(input); r++ {
+
+		char := input[r]
+
+		freqMap[char]++
+
+		if maxFreq < freqMap[char] {
+			maxFreq = freqMap[char]
+		}
+
+		windowSize = r - l + 1
+
+		replacementNeeded := windowSize - maxFreq
+
+		if replacementNeeded > k {
+			freqMap[input[l]]--
+			l++
+		} else {
+			if maxWindowSize < windowSize {
+				maxWindowSize = windowSize
+			}
+		}
+
+	}
+
+	return maxWindowSize
+
+}
