@@ -1,0 +1,37 @@
+// warmer days
+
+package main
+
+import "fmt"
+
+func main() {
+
+	days := []int{10, 20, 30, 1, 31, 3, 4, 5, 5, 19, 39}
+
+	fmt.Println(warmDays(days))
+}
+
+func warmDays(days []int) []int {
+	if len(days) <= 1 {
+		return []int{0}
+	}
+	stackDays := []int{0}
+	result := make([]int, len(days))
+	top := 0
+	i := 1
+
+	for i < len(days) {
+
+		for len(stackDays) > 0 && days[i] > days[stackDays[len(stackDays)-1]] {
+			top = stackDays[len(stackDays)-1]
+			result[top] = i - top
+			stackDays = stackDays[:len(stackDays)-1]
+		}
+
+		stackDays = append(stackDays, i)
+		i++
+	}
+
+	return result
+
+}
